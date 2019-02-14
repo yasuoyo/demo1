@@ -36,6 +36,8 @@ public class BatchReqController {
     private BatchReqService service;
     @Autowired
     private UserService mservice;
+    @Autowired
+    private UserService service1;
 
     @RequestMapping(value="/find",method= RequestMethod.GET)
     public String show(){
@@ -102,6 +104,18 @@ public class BatchReqController {
         String json = JSONObject.toJSON(list).toString();
         return json;
     }
+
+    @RequestMapping("/addinfo")
+    public String  addinfo(String username,String sex,String phone,String email,String pass){
+        System.out.println("名字："+username);
+        System.out.println("密码："+pass);
+        int line =service1.addInfo(username,sex,phone,email,pass);
+        if (line>0){
+            return "ok";
+        }
+        return "error";
+    }
+
 }
 
 

@@ -65,16 +65,6 @@ public class IndexController {
         return "/pages/member/add";
     }
 
-    @RequestMapping("/addinfo")
-    public String  addinfo(String username,String sex,String phone,String email,String pass){
-        System.out.println("名字："+username);
-        System.out.println("密码："+pass);
-        int line =service.addInfo(username,sex,phone,email,pass);
-        if (line>0){
-            return "/pages/member/list";
-        }
-        return "error";
-    }
     @RequestMapping("/password")
     public String   password(){
         return "/pages/member/password";
