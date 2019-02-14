@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo1.dao.BatchReqMapper" >
+    <resultMap id="BaseResultMap" type="com.example.demo1.pojo.BatchReq" >
+        <id column="job_group_id" property="jobGroupId" jdbcType="VARCHAR" />
+        <result column="job_id" property="jobId" jdbcType="VARCHAR" />
+        <result column="ReqCode" property="reqCode" jdbcType="VARCHAR" />
+        <result column="MsgNo" property="msgNo" jdbcType="VARCHAR" />
+        <result column="JobExe" property="jobExe" jdbcType="VARCHAR" />
+        <result column="InstuCde" property="instuCde" jdbcType="VARCHAR" />
+        <result column="OpId" property="opId" jdbcType="VARCHAR" />
+        <result column="UsrId" property="usrId" jdbcType="VARCHAR" />
+        <result column="UsrName" property="usrName" jdbcType="VARCHAR" />
+        <result column="SetSeq" property="setSeq" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        job_group_id,job_id,ReqCode,MsgNo,JobExe,InstuCde,OpId,UsrId,UsrName,SetSeq
+    </sql>
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="com.example.demo1.pojo.BatchReq" >
+        select
+        <include refid="Base_Column_List" />
+        from batch_req
+    </select>
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.example.demo1.pojo.BatchReq" >
+        select
+        <include refid="Base_Column_List" />
+        from batch_req    limit 1
+    </select>
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo1.dao.MemberInfoMapper" >
+    <resultMap id="BaseResultMap" type="com.example.demo1.pojo.MemberInfo" >
+        <result column="UserName" property="userName" jdbcType="VARCHAR" />
+        <result column="Sex" property="sex" jdbcType="VARCHAR" />
+        <result column="Phone" property="phone" jdbcType="VARCHAR" />
+        <result column="Email" property="email" jdbcType="VARCHAR" />
+        <result column="Password" property="password" jdbcType="VARCHAR" />
+
+    </resultMap>
+    <sql id="Base_Column_List" >
+        username,sex,phone,email,password
+    </sql>
+    <insert id="addInfo" parameterType="com.example.demo1.pojo.MemberInfo" >
+        insert into member_info(USERNAME,SEX,PHONE,
+        EMAIL,PASSWORD)
+        values (#{username,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertinfo" parameterType="com.example.demo1.pojo.MemberInfo" >
+        insert into member_info
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="username != null" >
+                USERNAME,
+            </if>
+            <if test="sex != null" >
+                SEX,
+            </if>
+            <if test="phone != null" >
+                PHONE,
+            </if>
+            <if test="email != null" >
+               EMAIL,
+            </if>
+            <if test="password != null" >
+                PASSWORD,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="username != null" >
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null" >
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null" >
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="com.example.demo1.pojo.MemberInfo" >
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+    </select>
+
+</mapper>
