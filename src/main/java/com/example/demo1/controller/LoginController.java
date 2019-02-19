@@ -65,13 +65,16 @@ public class LoginController{
          return "error";
     }
     @RequestMapping("/index2")
-    public String login2(String username,String password){
+    public String login2(String username,String password,HttpServletRequest request){
+        String captchaId = (String) request.getSession().getAttribute("vrifyCode");
+        String parameter = request.getParameter("vrifyCode");
+        System.out.println("Session  vrifyCode "+captchaId+" form vrifyCode "+parameter);
         User user=service.selectByName(username);
         String s1=user.getUserName();
         System.out.println("名字"+s1);
         String s2=user.getPassword();
         System.out.println("密码"+s2);
-        if(s1.equals(username)&& s2.equals(password) ){
+        if(s1.equals(username)&& s2.equals(password)&& captchaId.equals(parameter) ){
             return "index";
         }
         return "error";
