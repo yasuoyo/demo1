@@ -2,6 +2,7 @@ package com.example.demo1.controller;
 
 import com.example.demo1.pojo.User;
 import com.example.demo1.service.UserService;
+import com.example.demo1.utils.RandomValidateCodeUtil;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +59,7 @@ public class LoginController{
         String s1=user.getUserName();
         String s2=user.getPassword();
         HttpSession session = request.getSession(true);
-        session.setAttribute("zxc", "zxc");
+        session.setAttribute(username,username);
         if(s1.equals(username)&& s2.equals(password) && captchaId.equals(parameter)){
             return "index2";
         }
@@ -66,15 +67,18 @@ public class LoginController{
     }
     @RequestMapping("/index2")
     public String login2(String username,String password,HttpServletRequest request){
-        String captchaId = (String) request.getSession().getAttribute("vrifyCode");
+        String captchaId = (String) request.getSession().getAttribute("RANDOMVALIDATECODEKEY");
         String parameter = request.getParameter("vrifyCode");
-        System.out.println("Session  vrifyCode "+captchaId+" form vrifyCode "+parameter);
+        String par = parameter.toUpperCase();
+        System.out.println("Session  vrifyCode "+captchaId+" form vrifyCode "+par);
         User user=service.selectByName(username);
         String s1=user.getUserName();
         System.out.println("名字"+s1);
         String s2=user.getPassword();
         System.out.println("密码"+s2);
-        if(s1.equals(username)&& s2.equals(password)&& captchaId.equals(parameter) ){
+        HttpSession session = request.getSession(true);
+        session.setAttribute(username,username);
+        if(s1.equals(username)&& s2.equals(password)&& captchaId.equals(par) ){
             return "index";
         }
         return "error";
@@ -148,23 +152,31 @@ public class LoginController{
     }
     @RequestMapping("/check" )
     public String check(){
-
         return "yanzheng";
     }
 
     @RequestMapping("/log")
     public String che(){
-
         return "yanzheng";
     }
+    @RequestMapping(value = "/getVerify")
+    public void getVerify(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            response.setContentType("image/jpeg");//设置相应类型,告诉浏览器输出的内容为图片
+            response.setHeader("Pragma", "No-cache");//设置响应头信息，告诉浏览器不要缓存此内容
+            response.setHeader("Cache-Control", "no-cache");
+            response.setDateHeader("Expire", 0);
+            RandomValidateCodeUtil randomValidateCode = new RandomValidateCodeUtil();
+            randomValidateCode.getRandcode(request, response);//输出验证码图片方法
+        } catch (Exception e) {
+            logger.error("获取验证码失败>>>> ", e);
+        }
+    }
 
-
-
-
-
-
-
-
+    @RequestMapping("/yz")
+    public String yz(){
+        return "yz";
+    }
 
 
 }

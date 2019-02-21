@@ -26,10 +26,11 @@
             <input class="loginin" value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
             <hr class="hr20" >
             <div>
-                <!-- <img alt="这是图片" src="/img/001.png"/> -->
-                <!--   <img alt="验证码" onclick = "this.src='/defaultKaptcha?d='+new Date()*1" src="/login/defaultKaptcha" /> -->
-                <img alt="验证码" onclick = "this.src='/login/defaultKaptcha?d='+new Date()*1" src="/login/defaultKaptcha" />
-                <input type="text" name="vrifyCode" />
+                <!--<img alt="验证码" onclick = "this.src='/login/defaultKaptcha?d='+new Date()*1" src="/login/defaultKaptcha" />-->
+                <!--<input type="text" name="vrifyCode" />-->
+                    <img id="imgVerify"   onclick = "this.src='/login/getVerify?d='+new Date()*1"     src="/login/getVerify" alt="更换验证码" height="36" width="80%">
+                    <input type="text" placeholder="请输入验证码"name="vrifyCode"/>
+
             </div>
         </form>
     </div>
