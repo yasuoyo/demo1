@@ -125,7 +125,7 @@
                         $(obj).each(function (index){
                             var val=obj[index];
                             var tr=$('<tr></tr>');
-                            tr.append('<td>'+'<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="1"><i class="layui-icon">&#xe605;</i></div>' +'</td>'+ '<td>'+'1' + '</td>' + '<td>'+ val.userName + '</td>' +'<td>'+ val.sex + '</td>' + '<td>'+ val.phone + '</td>'+'<td>'+ val.email+ '</td>'+'<td>'+ val.password+ '</td>'+'<td>'+ '2017-01-01 11:11:42' + '</td>'+'<td class="td-status">'+ '<span class="layui-btn layui-btn-normal layui-btn-xs">已启用</span>' +'</td>'+'<td class="td-manage">'+ '<a onclick="member_stop(this,\'10001\')" href="javascript:;" title="启用">\n' +
+                            tr.append('<td>'+'<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="1" ><i class="layui-icon">&#xe605;</i></div>' +'</td>'+ '<td>'+ val.id + '</td>' + '<td>'+ val.userName + '</td>' +'<td>'+ val.sex + '</td>' + '<td>'+ val.phone + '</td>'+'<td>'+ val.email+ '</td>'+'<td>'+ val.password+ '</td>'+'<td>'+ '2017-01-01 11:11:42' + '</td>'+'<td class="td-status">'+ '<span class="layui-btn layui-btn-normal layui-btn-xs">已启用</span>' +'</td>'+'<td class="td-manage">'+ '<a onclick="member_stop(this,\'10001\')" href="javascript:;" title="启用">\n' +
                                 '\t\t\t\t\t\t\t\t<i class="layui-icon">&#xe601;</i>\n' +
                                 '\t\t\t\t\t\t\t</a>\n' +
                                 '\t\t\t\t\t\t\t<a title="编辑" onclick="WeAdminEdit(\'编辑\',\'/pages/edit\', 1, 600, 400)" href="javascript:;">\n' +

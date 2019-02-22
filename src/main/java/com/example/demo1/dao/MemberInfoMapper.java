@@ -10,7 +10,7 @@ import java.util.List;
 public interface MemberInfoMapper {
     int addInfo(@Param("username")String username, @Param("sex")String sex,@Param("phone") String phone,@Param("email") String email, @Param("password")String password);
 
-    int insertinfo(@Param("username")String username, @Param("sex")String sex,@Param("phone") String phone,@Param("email") String email, @Param("password")String password);
+    int insertinfo(@Param("id")String id,@Param("username")String username, @Param("sex")String sex,@Param("phone") String phone,@Param("email") String email, @Param("password")String password, @Param("systime")String systime);
 
     List<MemberInfo> selectAll();
 

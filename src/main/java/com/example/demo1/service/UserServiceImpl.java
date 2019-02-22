@@ -33,8 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int addInfo(String username, String sex, String phone, String email, String password) {
-        return  memberInfoMapper.insertinfo(username,sex,phone,email,password);
+    public int addInfo(String id,String username, String sex, String phone, String email, String password,String systime) {
+        return  memberInfoMapper.insertinfo(id,username,sex,phone,email,password,systime);
     }
 
     @Override

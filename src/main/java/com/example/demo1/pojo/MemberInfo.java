@@ -1,5 +1,7 @@
 package com.example.demo1.pojo;
 
+import java.util.Date;
+
 /**
  * @program: demo1
  * @description:
@@ -7,11 +9,22 @@ package com.example.demo1.pojo;
  * @create: 2019-02-13 14:48
  **/
 public class MemberInfo {
+    private String Id;
     private String UserName;
     private String Sex;
     private String Phone;
     private String Email;
     private String Password;
+    private String SysTime;
+
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
 
     public String getUserName() {
         return UserName;
@@ -51,6 +64,14 @@ public class MemberInfo {
 
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public String getSysTime() {
+        return SysTime;
+    }
+
+    public void setSysTime(String sysTime) {
+        SysTime = sysTime;
     }
 }
 

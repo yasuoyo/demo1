@@ -13,6 +13,8 @@ import com.example.demo1.pojo.BatchReq;
 import com.example.demo1.pojo.MemberInfo;
 import com.example.demo1.service.BatchReqService;
 import com.example.demo1.service.UserService;
+import com.example.demo1.utils.PageVO;
+import com.example.demo1.utils.Random;
 import com.taobao.api.ApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -102,6 +106,7 @@ public class BatchReqController {
     public String showlist(){
         List<MemberInfo> list = mservice.selectAll();
         String json = JSONObject.toJSON(list).toString();
+        System.out.println("json:"+json);
         return json;
     }
 
@@ -109,7 +114,11 @@ public class BatchReqController {
     public String  addinfo(String username,String sex,String phone,String email,String pass){
         System.out.println("名字："+username);
         System.out.println("密码："+pass);
-        int line =service1.addInfo(username,sex,phone,email,pass);
+        String id = Random.getLocalTrmSeqNum();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        System.out.println(df.format(new Date()));
+        String systime = df.format(new Date());
+        int line =service1.addInfo(id,username,sex,phone,email,pass,systime);
         if (line>0){
             return "ok";
         }
