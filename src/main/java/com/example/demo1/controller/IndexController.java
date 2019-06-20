@@ -46,7 +46,6 @@ public class IndexController {
     public String showwelcome(){
         return "/pages/welcome";
     }
-
     @RequestMapping("/loginOut" )
     public String loginout(HttpSession session){
         session.invalidate();

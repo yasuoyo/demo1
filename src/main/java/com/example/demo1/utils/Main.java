@@ -1,5 +1,8 @@
 package com.example.demo1.utils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @program: demo1
  * @description:
@@ -13,8 +16,14 @@ package com.example.demo1.utils;
 
 public class Main {
 
+    public static int i = 1;
     public static void main(String[] args) {
-        System.out.println(quQiu(10, 3));
+       // System.out.println(equ1(10, 3));
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+
+
     }
 
     static int quQiu(int n, int m) {
@@ -39,13 +48,18 @@ public class Main {
 
     return equ(n-1,m);
    }
+   static int equ1(int n,int m){
 
-
-
-
-
-
-
+        if(n > m){
+            if(i == 2){
+                return 3;
+            }
+            ++i;
+            System.out.println("i:"+i);
+            return 1;
+        }
+        return 2;
+    }
 
 
 }

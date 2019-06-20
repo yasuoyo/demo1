@@ -24,7 +24,20 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>com.e-iceblue</id>
+			<name>e-iceblue</name>
+			<url>http://repo.e-iceblue.com/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
+			<!--<dependency>-->
+				<!--<groupId>e-iceblue</groupId>-->
+				<!--<artifactId>spire.pdf.free</artifactId>-->
+				<!--<version>2.0.0</version>-->
+			<!--</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
@@ -94,6 +107,13 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
 		</dependency>
+		<dependency>
+			<groupId>spire-pdf</groupId>
+			<artifactId>spire-pdf</artifactId>
+			<version>2.4.4</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -103,6 +123,21 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<fork>true</fork>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!-- mybatis generator 自动生成代码插件 -->
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.3.1</version>
+				<configuration>
+					<configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
+					<overwrite>true</overwrite>
+					<verbose>true</verbose>
 				</configuration>
 			</plugin>
 		</plugins>

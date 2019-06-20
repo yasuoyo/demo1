@@ -21,7 +21,7 @@ public class MyInterceptor implements HandlerInterceptor {
         Map map =(Map)httpServletRequest.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
         System.out.println(map.get("name"));
         System.out.println(httpServletRequest.getParameter("username"));
-        if(map.get("name").equals("yoyo@qq.com")) {
+        if(map.get("name").equals("xiaoming")) {
             return true;    //如果false，停止流程，api被拦截
         }else {
             PrintWriter printWriter = httpServletResponse.getWriter();

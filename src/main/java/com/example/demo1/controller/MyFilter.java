@@ -14,17 +14,13 @@ import java.io.IOException;
 public class MyFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-      //  System.out.println(servletRequest.getParameter("name"));
         HttpServletRequest hrequest = (HttpServletRequest)servletRequest;
         HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) servletResponse);
         if(hrequest.getRequestURI().indexOf("/index") != -1 ||
                 hrequest.getRequestURI().indexOf("/asd") != -1 ||
                 hrequest.getRequestURI().indexOf("/online") != -1 ||
                 hrequest.getRequestURI().indexOf("/boot") != -1 ||
-               hrequest.getRequestURI().indexOf("/pages") != -1 ||
-//                hrequest.getRequestURI().indexOf("/login/index2") != -1 ||
-//                hrequest.getRequestURI().indexOf("/login/hello") != -1 ||
-//                hrequest.getRequestURI().indexOf("/login/hello2") != -1 ||
+                hrequest.getRequestURI().indexOf("/pages") != -1 ||
                 hrequest.getRequestURI().indexOf("/login") != -1
      ) {
             filterChain.doFilter(servletRequest, servletResponse);

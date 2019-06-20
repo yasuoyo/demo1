@@ -2,7 +2,6 @@ package com.example.demo1.service;
 
 import com.example.demo1.pojo.MemberInfo;
 import com.example.demo1.pojo.User;
-import com.example.demo1.utils.PageVO;
 
 import java.util.List;
 
